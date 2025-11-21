@@ -94,7 +94,6 @@ class _ControlScoreState extends State<ControlScore> {
 
     return Column(
       children: [
-        // + / -
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
