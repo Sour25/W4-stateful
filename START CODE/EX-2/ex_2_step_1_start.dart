@@ -10,13 +10,13 @@ void main() => runApp(
       ),
       body: Column(
         children: [
-          favoriteCard(),
+          FavoriteCard(),
           Container(height: 2, color: Colors.grey),
 
-          favoriteCard(),
+          FavoriteCard(),
           Container(height: 2, color: Colors.grey),
 
-          favoriteCard(),
+          FavoriteCard(),
           Container(height: 2, color: Colors.grey),
         ],
       ),
@@ -24,8 +24,21 @@ void main() => runApp(
   ),
 );
 
-class favoriteCard extends StatelessWidget {
-  const favoriteCard({super.key});
+class FavoriteCard extends StatefulWidget {
+  const FavoriteCard({super.key});
+
+  @override
+  State<FavoriteCard> createState() => _FavoriteCardState();
+}
+
+class _FavoriteCardState extends State<FavoriteCard> {
+  bool isFavorite = false;
+
+  void toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,43 +49,21 @@ class favoriteCard extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: const [
                 Text("title", style: TextStyle(color: Colors.blue)),
                 Text("description"),
               ],
             ),
           ),
           const Spacer(),
-          heartIcon(),
+          IconButton(
+            onPressed: toggleFavorite,
+            icon: Icon(
+              Icons.favorite,
+              color: isFavorite ? Colors.red : Colors.grey,
+            ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class heartIcon extends StatefulWidget {
-  const heartIcon({super.key});
-
-  @override
-  State<heartIcon> createState() => _heartIconState();
-}
-
-class _heartIconState extends State<heartIcon> {
-  bool iconSelected = false;
-
-  void selectedHeart() {
-    setState(() {
-      iconSelected = !iconSelected;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: selectedHeart,
-      icon: Icon(
-        Icons.favorite,
-        color: iconSelected ? Colors.red : Colors.grey,
       ),
     );
   }
