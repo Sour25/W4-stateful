@@ -4,7 +4,7 @@ void main() => runApp(
   MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(
-      backgroundColor: const Color(0xFFB9CF59), // exact EX4 background
+      backgroundColor: const Color(0xFFB9CF59), 
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 30),
         children: const [
@@ -82,14 +82,14 @@ class _ControlScoreState extends State<ControlScore> {
     const double barWidth = 280;
     final double filledWidth = (barWidth * score) / fullScore;
 
-    // 🔥 DYNAMIC COLOR BASED ON SCORE
+   
     Color barColor;
     if (score <= 4) {
-      barColor = const Color(0xFFB7E6A5); // light green
+      barColor = const Color(0xFFB7E6A5); 
     } else if (score <= 8) {
-      barColor = const Color(0xFF7CBD64); // EX4 green
+      barColor = const Color(0xFF7CBD64); 
     } else {
-      barColor = const Color(0xFF3E6B2B); // dark green
+      barColor = const Color(0xFF3E6B2B); 
     }
 
     return Column(
