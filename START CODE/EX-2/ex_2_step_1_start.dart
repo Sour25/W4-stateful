@@ -9,60 +9,58 @@ void main() => runApp(
         title: const Text("Favorite cards"),
       ),
       body: Column(
-        children: const [
-          FavoriteCard(),
-          Divider(height: 2, color: Colors.grey),
+        children: [
+          favoriteCard(),
+          Container(height: 2, color: Colors.grey),
 
-          FavoriteCard(),
-          Divider(height: 2, color: Colors.grey),
+          favoriteCard(),
+          Container(height: 2, color: Colors.grey),
 
-          FavoriteCard(),
-          Divider(height: 2, color: Colors.grey),
+          favoriteCard(),
+          Container(height: 2, color: Colors.grey),
         ],
       ),
     ),
   ),
 );
 
-class FavoriteCard extends StatelessWidget {
-  const FavoriteCard({super.key});
+class favoriteCard extends StatelessWidget {
+  const favoriteCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.all(20),
       child: Row(
         children: [
-          // Text Section
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text("title", style: TextStyle(color: Colors.blue)),
                 Text("description"),
               ],
             ),
           ),
-
-          // Heart Icon
-          const HeartIcon(),
+          const Spacer(),
+          heartIcon(),
         ],
       ),
     );
   }
 }
 
-class HeartIcon extends StatefulWidget {
-  const HeartIcon({super.key});
+class heartIcon extends StatefulWidget {
+  const heartIcon({super.key});
 
   @override
-  State<HeartIcon> createState() => _HeartIconState();
+  State<heartIcon> createState() => _heartIconState();
 }
 
-class _HeartIconState extends State<HeartIcon> {
+class _heartIconState extends State<heartIcon> {
   bool iconSelected = false;
 
-  void toggleHeart() {
+  void selectedHeart() {
     setState(() {
       iconSelected = !iconSelected;
     });
@@ -71,7 +69,7 @@ class _HeartIconState extends State<HeartIcon> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: toggleHeart,
+      onPressed: selectedHeart,
       icon: Icon(
         Icons.favorite,
         color: iconSelected ? Colors.red : Colors.grey,
