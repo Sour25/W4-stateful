@@ -4,7 +4,15 @@ void main() => runApp(
   MaterialApp(
     home: Scaffold(
       appBar: AppBar(title: const Text("Custom buttons")),
-      body: const Center(child: SelectableButton()),
+      body: const Center(child: Column(
+        children:[
+          SelectableButton(),
+          const SizeBox(height: 10),
+          SelectableButton(),
+          const SizeBox(height: 10),
+          SelectableButton(),
+          const SizeBox(height: 10),
+      ),
     ),
   ),
 );
@@ -48,3 +56,4 @@ class _SelectableButtonState extends State<SelectableButton> {
     );
   }
 }
+
